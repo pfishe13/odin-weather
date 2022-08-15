@@ -35,7 +35,12 @@ const Weather = (location) => {
     return Math.round(kelv - 273.15);
   }
 
-  return { data, setData };
+  function getCity() {
+    console.log(`Returning ${data.cityName}`);
+    return data.cityName;
+  }
+
+  return { data, setData, getCity };
 };
 
 export default Weather;
