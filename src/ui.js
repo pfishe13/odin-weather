@@ -9,7 +9,7 @@ const UI = (() => {
 
   const updateUI = (weatherObject) => {
     console.log(`The name of the city is ${weatherObject['cityName']}`);
-    // updateBackgroundImage();
+    updateBackgroundImage(weatherObject['main']);
     updateCityHeader(weatherObject['cityName']);
     celsius
       ? updateLeftSideData(weatherObject['celsius'])
@@ -27,6 +27,10 @@ const UI = (() => {
     );
   };
 
+  const updateBackgroundImage = (condition) => {
+    console.log('Updating background');
+  };
+
   const updateCityHeader = (city) => {
     const cityHeader = document.getElementById('city-header');
     console.log(cityHeader);
@@ -39,12 +43,13 @@ const UI = (() => {
   };
 
   const updateRightSideData = (description, feelsTemp, humidity, wind) => {
-    const rightContainer = document.getElementById('details');
+    const rightContainer = document.getElementById('right');
 
-    const descriptionContainer = document.createElement('div');
+    const descriptionContainer = document.getElementById('top');
     const descriptionHeader = document.createElement('h3');
     descriptionHeader.textContent = description;
     descriptionContainer.appendChild(descriptionHeader);
+    descriptionContainer.classList.add('float-container');
 
     const feelsTempContainer = document.createElement('div');
     const feelsTempHeader = document.createElement('h4');
@@ -53,6 +58,7 @@ const UI = (() => {
     feelsTempData.textContent = feelsTemp;
     feelsTempContainer.appendChild(feelsTempHeader);
     feelsTempContainer.appendChild(feelsTempData);
+    feelsTempContainer.classList.add('float-container');
 
     const humidityContainer = document.createElement('div');
     const humidityHeader = document.createElement('h4');
@@ -61,6 +67,7 @@ const UI = (() => {
     humidityData.textContent = `${humidity}%`;
     humidityContainer.appendChild(humidityHeader);
     humidityContainer.appendChild(humidityData);
+    humidityContainer.classList.add('float-container');
 
     const windContainer = document.createElement('div');
     const windHeader = document.createElement('h4');
@@ -69,6 +76,7 @@ const UI = (() => {
     windData.textContent = `${wind} MPH`;
     windContainer.appendChild(windHeader);
     windContainer.appendChild(windData);
+    windContainer.classList.add('float-container');
 
     rightContainer.appendChild(descriptionContainer);
     rightContainer.appendChild(feelsTempContainer);

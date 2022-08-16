@@ -7,19 +7,29 @@
     <title>Weather</title>
     <script src="main.js" defer></script>
   </head>
-  <body>
+  <body id="animation-bg">
     <div class="box">
-      <div id="top">
-        <h1 id="city-header"></h1>
+      <div id="left" class="float-container">
+        <h2 id="temperature"></h2>
       </div>
-      <div id="bottom">
-        <div id="left">
-          <h2 id="temperature"></h2>
+      <div id="right">
+        <div id="top" class="float-container">
+          <h1 id="city-header"></h1>
         </div>
-        <div id="right">
-          <div id="details"></div>
-        </div>
+        <!-- <div id="details"></div> -->
       </div>
     </div>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.clouds.min.js"></script>
+    <script>
+      VANTA.CLOUDS({
+        el: '#animation-bg',
+        mouseControls: true,
+        touchControls: true,
+        gyroControls: false,
+        minHeight: 200.0,
+        minWidth: 200.0,
+      });
+    </script> -->
   </body>
 </html>

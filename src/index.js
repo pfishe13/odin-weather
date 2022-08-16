@@ -26,6 +26,7 @@ function parseWeatherData(dataJSON) {
     celsius: toCels(dataJSON['main']['temp']),
     feelsCelsius: toFahr(dataJSON['main']['feels_like']),
     description: dataJSON['weather'][0]['description'],
+    main: dataJSON['weather'][0]['main'],
     wind: dataJSON['wind']['speed'],
     humidity: dataJSON['main']['humidity'],
   };
