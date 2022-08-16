@@ -39,11 +39,11 @@ const UI = (() => {
 
   const updateLeftSideData = (temp) => {
     const leftHeader = document.getElementById('temperature');
-    leftHeader.textContent = temp;
+    leftHeader.textContent = `${temp}\xB0`;
   };
 
   const updateRightSideData = (description, feelsTemp, humidity, wind) => {
-    const rightContainer = document.getElementById('right');
+    const rightContainer = document.getElementById('box');
 
     const descriptionContainer = document.getElementById('top');
     const descriptionHeader = document.createElement('h3');
@@ -55,7 +55,7 @@ const UI = (() => {
     const feelsTempHeader = document.createElement('h4');
     feelsTempHeader.textContent = `Feels Like`;
     const feelsTempData = document.createElement('h4');
-    feelsTempData.textContent = feelsTemp;
+    feelsTempData.textContent = `${feelsTemp}\xB0`;
     feelsTempContainer.appendChild(feelsTempHeader);
     feelsTempContainer.appendChild(feelsTempData);
     feelsTempContainer.classList.add('float-container');
