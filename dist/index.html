@@ -6,8 +6,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Weather</title>
     <script src="main.js" defer></script>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"
+    />
   </head>
   <body id="animation-bg">
+    <div id="header" class="float-container">
+      <form action="">
+        <div>
+          <label for="city-search"></label>
+          <input type="text" name="city-search" />
+        </div>
+        <div>
+          <button type="submit">
+            <span class="material-symbols-outlined"> search </span>
+          </button>
+        </div>
+      </form>
+    </div>
     <div id="box">
       <div id="top" class="float-container">
         <h1 id="city-header"></h1>

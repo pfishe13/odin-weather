@@ -3,6 +3,13 @@ import './styles.css';
 
 let defaultLocation = 'Miami';
 
+document.querySelector('form').addEventListener('submit', function (e) {
+  e.preventDefault();
+  const city = document.querySelector('input').value;
+  console.log(`City value is ${city}`);
+  getWeatherData(city);
+});
+
 async function getWeatherData(location) {
   const requestURL = `http://api.openweathermap.org/data/2.5/weather?q=${location}&APPID=e39170d30aebc36d04505fbbfd50451c
     `;

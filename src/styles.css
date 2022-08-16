@@ -18,6 +18,43 @@ body {
   align-items: center;
 }
 
+#header {
+  margin-top: 20px;
+  top: 0;
+  position: absolute;
+}
+
+#header > form {
+  display: flex;
+}
+
+input {
+  box-sizing: border-box;
+  height: 36px;
+  font-size: 1.4em;
+  padding: 0;
+  padding-left: 12px;
+  margin: 5px;
+  background-color: transparent;
+}
+
+.active {
+  float: right;
+  color: var(--error-color);
+}
+
+input:focus-visible {
+  outline: none;
+}
+
+button[type='submit'] {
+  margin-top: 10px;
+  margin-right: 10px;
+  background-color: transparent;
+  color: #1e1e1e;
+  font-size: 1.1em;
+}
+
 #box {
   height: 50%;
   width: 45%;

@@ -43,9 +43,12 @@ const UI = (() => {
   };
 
   const updateRightSideData = (description, feelsTemp, humidity, wind) => {
+    clearRightSide();
+
     const rightContainer = document.getElementById('box');
 
     const descriptionContainer = document.getElementById('top');
+    descriptionContainer.lastChild.remove();
     const descriptionHeader = document.createElement('h3');
     descriptionHeader.textContent = description;
     descriptionContainer.appendChild(descriptionHeader);
@@ -82,6 +85,13 @@ const UI = (() => {
     rightContainer.appendChild(feelsTempContainer);
     rightContainer.appendChild(humidityContainer);
     rightContainer.appendChild(windContainer);
+  };
+
+  const clearRightSide = () => {
+    const rightside = document.getElementById('box');
+    for (let i = 0; i < 3; i += 1) {
+      rightside.lastChild.remove();
+    }
   };
 
   return { updateUI, toggleCelsius };
