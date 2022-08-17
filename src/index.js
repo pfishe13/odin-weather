@@ -11,7 +11,7 @@ document.querySelector('form').addEventListener('submit', function (e) {
 });
 
 async function getWeatherData(location) {
-  const requestURL = `http://api.openweathermap.org/data/2.5/weather?q=${location}&APPID=e39170d30aebc36d04505fbbfd50451c
+  const requestURL = `https://api.openweathermap.org/data/2.5/weather?q=${location}&APPID=e39170d30aebc36d04505fbbfd50451c
     `;
   let responseData;
   let response;
