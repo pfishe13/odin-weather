@@ -23,17 +23,15 @@ const UI = (() => {
       weatherObject['description'],
       feelsTemp,
       weatherObject['humidity'],
-      weatherObject['wind']
+      weatherObject['wind'],
+      weatherObject['clouds']
     );
   };
 
-  const updateBackgroundImage = (condition) => {
-    console.log('Updating background');
-  };
+  const updateBackgroundImage = (condition) => {};
 
   const updateCityHeader = (city) => {
     const cityHeader = document.getElementById('city-header');
-    console.log(cityHeader);
     cityHeader.textContent = city;
   };
 
@@ -42,7 +40,13 @@ const UI = (() => {
     leftHeader.textContent = `${temp}\xB0`;
   };
 
-  const updateRightSideData = (description, feelsTemp, humidity, wind) => {
+  const updateRightSideData = (
+    description,
+    feelsTemp,
+    humidity,
+    wind,
+    clouds
+  ) => {
     clearRightSide();
 
     const rightContainer = document.getElementById('box');
@@ -56,7 +60,9 @@ const UI = (() => {
 
     const feelsTempContainer = document.createElement('div');
     const feelsTempHeader = document.createElement('h4');
-    feelsTempHeader.textContent = `Feels Like`;
+    feelsTempHeader.innerHTML = `<span class="material-symbols-outlined">
+    device_thermostat
+    </span>Feels Like`;
     const feelsTempData = document.createElement('h4');
     feelsTempData.textContent = `${feelsTemp}\xB0`;
     feelsTempContainer.appendChild(feelsTempHeader);
@@ -65,7 +71,9 @@ const UI = (() => {
 
     const humidityContainer = document.createElement('div');
     const humidityHeader = document.createElement('h4');
-    humidityHeader.textContent = `Humidity`;
+    humidityHeader.innerHTML = `<span class="material-symbols-outlined">
+    humidity_mid
+    </span>Humidity`;
     const humidityData = document.createElement('h4');
     humidityData.textContent = `${humidity}%`;
     humidityContainer.appendChild(humidityHeader);
@@ -74,22 +82,36 @@ const UI = (() => {
 
     const windContainer = document.createElement('div');
     const windHeader = document.createElement('h4');
-    windHeader.textContent = `Wind`;
+    windHeader.innerHTML = `<span class="material-symbols-outlined">
+    air
+    </span>Wind`;
     const windData = document.createElement('h4');
-    windData.textContent = `${wind} MPH`;
+    windData.textContent = `${wind} mph`;
     windContainer.appendChild(windHeader);
     windContainer.appendChild(windData);
     windContainer.classList.add('float-container');
+
+    const cloudsContainer = document.createElement('div');
+    const cloudsHeader = document.createElement('h4');
+    cloudsHeader.innerHTML = `<span class="material-symbols-outlined">
+    air
+    </span>clouds`;
+    const cloudsData = document.createElement('h4');
+    cloudsData.textContent = `${clouds}%`;
+    cloudsContainer.appendChild(cloudsHeader);
+    cloudsContainer.appendChild(cloudsData);
+    cloudsContainer.classList.add('float-container');
 
     rightContainer.appendChild(descriptionContainer);
     rightContainer.appendChild(feelsTempContainer);
     rightContainer.appendChild(humidityContainer);
     rightContainer.appendChild(windContainer);
+    rightContainer.appendChild(cloudsContainer);
   };
 
   const clearRightSide = () => {
     const rightside = document.getElementById('box');
-    for (let i = 0; i < 3; i += 1) {
+    for (let i = 0; i < 4; i += 1) {
       rightside.lastChild.remove();
     }
   };

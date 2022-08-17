@@ -36,6 +36,7 @@ function parseWeatherData(dataJSON) {
     main: dataJSON['weather'][0]['main'],
     wind: dataJSON['wind']['speed'],
     humidity: dataJSON['main']['humidity'],
+    clouds: dataJSON['clouds']['all'],
   };
   console.log(weatherObject);
   return weatherObject;
