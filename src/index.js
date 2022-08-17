@@ -13,14 +13,23 @@ document.querySelector('form').addEventListener('submit', function (e) {
 async function getWeatherData(location) {
   const requestURL = `http://api.openweathermap.org/data/2.5/weather?q=${location}&APPID=e39170d30aebc36d04505fbbfd50451c
     `;
-  const request = new Request(requestURL);
-  const response = await fetch(requestURL, {
-    mode: 'cors',
-  });
-  const responseData = await response.json();
-  //   console.log(responseData);
-  let weatherObject = parseWeatherData(responseData);
-  UI.updateUI(weatherObject);
+  let responseData;
+  let response;
+  try {
+    response = await fetch(requestURL, {
+      mode: 'cors',
+    });
+
+    if (response.status === 404) {
+      throw 'Error getting weather data';
+    }
+
+    responseData = await response.json();
+    let weatherObject = parseWeatherData(responseData);
+    UI.updateUI(weatherObject);
+  } catch (err) {
+    UI.showInvalidLocation();
+  }
 }
 
 function parseWeatherData(dataJSON) {
@@ -38,7 +47,6 @@ function parseWeatherData(dataJSON) {
     humidity: dataJSON['main']['humidity'],
     clouds: dataJSON['clouds']['all'],
   };
-  //   console.log(weatherObject);
   return weatherObject;
 }
 

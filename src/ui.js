@@ -1,5 +1,3 @@
-import Weather from './weather';
-
 const UI = (() => {
   let celsius = false;
   let weather;
@@ -128,7 +126,6 @@ const UI = (() => {
 
   const changeTempUnit = (e) => {
     toggleCelsius();
-    console.log(`clicked`);
     let displayTemp = celsius ? weather['celsius'] : weather['fahrenheit'];
     const tempContainer = document.getElementById('temperature');
     tempContainer.textContent = `${displayTemp}\xB0`;
@@ -141,7 +138,18 @@ const UI = (() => {
     feelsTempHeader.textContent = `${displayFeelsTemp}\xB0`;
   };
 
-  return { updateUI, toggleCelsius };
+  const showInvalidLocation = () => {
+    console.log(`Invalid Location`);
+    const errorMessage = document.createElement('div');
+    errorMessage.textContent = 'Invalid Location';
+    document.getElementById('header').appendChild(errorMessage);
+
+    setTimeout(function () {
+      errorMessage.remove();
+    }, 3000);
+  };
+
+  return { updateUI, toggleCelsius, showInvalidLocation };
 })();
 
 export default UI;
