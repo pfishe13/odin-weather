@@ -139,7 +139,6 @@ const UI = (() => {
   };
 
   const showInvalidLocation = () => {
-    console.log(`Invalid Location`);
     const errorMessage = document.createElement('div');
     errorMessage.textContent = 'Invalid Location';
     document.getElementById('header').appendChild(errorMessage);

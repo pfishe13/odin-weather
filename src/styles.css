@@ -88,7 +88,7 @@ button[type='submit'] {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(3, 1fr);
-  gap: 10px;
+  gap: 15px;
 }
 
 #box > div {
@@ -119,13 +119,17 @@ button[type='submit'] {
   position: relative;
   border-radius: 20px;
   background-color: rgba(58, 77, 102, 0.2);
+  transition: all 0.2s ease-in-out;
+}
+
+.float-container:hover {
+  transform: scale(1.03);
 }
 
 .float-container > h4:first-of-type {
   font-size: 1.2em;
   text-transform: uppercase;
   padding-top: 15px;
-  color: yellow;
   position: absolute;
   top: 0;
   display: flex;
