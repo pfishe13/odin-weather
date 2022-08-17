@@ -6,7 +6,7 @@ let defaultLocation = 'Miami';
 document.querySelector('form').addEventListener('submit', function (e) {
   e.preventDefault();
   const city = document.querySelector('input').value;
-  console.log(`City value is ${city}`);
+  //   console.log(`City value is ${city}`);
   getWeatherData(city);
 });
 
@@ -18,7 +18,7 @@ async function getWeatherData(location) {
     mode: 'cors',
   });
   const responseData = await response.json();
-  console.log(responseData);
+  //   console.log(responseData);
   let weatherObject = parseWeatherData(responseData);
   UI.updateUI(weatherObject);
 }
@@ -31,14 +31,14 @@ function parseWeatherData(dataJSON) {
     fahrenheit: toFahr(dataJSON['main']['temp']),
     feelsFahrenheit: toFahr(dataJSON['main']['feels_like']),
     celsius: toCels(dataJSON['main']['temp']),
-    feelsCelsius: toFahr(dataJSON['main']['feels_like']),
+    feelsCelsius: toCels(dataJSON['main']['feels_like']),
     description: dataJSON['weather'][0]['description'],
     main: dataJSON['weather'][0]['main'],
     wind: dataJSON['wind']['speed'],
     humidity: dataJSON['main']['humidity'],
     clouds: dataJSON['clouds']['all'],
   };
-  console.log(weatherObject);
+  //   console.log(weatherObject);
   return weatherObject;
 }
 

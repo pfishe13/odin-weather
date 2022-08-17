@@ -57,7 +57,9 @@ button[type='submit'] {
 
 #box {
   height: 50%;
+  min-height: 350px;
   width: 45%;
+  min-width: 600px;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(3, 1fr);
@@ -81,9 +83,11 @@ button[type='submit'] {
 }
 
 #left {
+  box-sizing: border-box;
   font-size: 8rem;
   grid-column: span 2;
   grid-row: 2 / 4;
+  padding-left: 2vw;
 }
 
 .float-container {

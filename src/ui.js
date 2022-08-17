@@ -2,15 +2,18 @@ import Weather from './weather';
 
 const UI = (() => {
   let celsius = false;
+  let weather;
 
   const toggleCelsius = () => {
     celsius = !celsius;
   };
 
   const updateUI = (weatherObject) => {
-    console.log(`The name of the city is ${weatherObject['cityName']}`);
+    weather = weatherObject;
     updateBackgroundImage(weatherObject['main']);
     updateCityHeader(weatherObject['cityName']);
+
+    setCelsiusSwitch();
     celsius
       ? updateLeftSideData(weatherObject['celsius'])
       : updateLeftSideData(weatherObject['fahrenheit']);
@@ -68,6 +71,7 @@ const UI = (() => {
     feelsTempContainer.appendChild(feelsTempHeader);
     feelsTempContainer.appendChild(feelsTempData);
     feelsTempContainer.classList.add('float-container');
+    feelsTempContainer.id = 'feels-temp';
 
     const humidityContainer = document.createElement('div');
     const humidityHeader = document.createElement('h4');
@@ -114,6 +118,27 @@ const UI = (() => {
     for (let i = 0; i < 4; i += 1) {
       rightside.lastChild.remove();
     }
+  };
+
+  const setCelsiusSwitch = () => {
+    const tempButton = document.getElementById('left');
+    tempButton.removeEventListener('click', changeTempUnit, true);
+    tempButton.addEventListener('click', changeTempUnit);
+  };
+
+  const changeTempUnit = (e) => {
+    toggleCelsius();
+    console.log(`clicked`);
+    let displayTemp = celsius ? weather['celsius'] : weather['fahrenheit'];
+    const tempContainer = document.getElementById('temperature');
+    tempContainer.textContent = `${displayTemp}\xB0`;
+
+    let displayFeelsTemp = celsius
+      ? weather['feelsCelsius']
+      : weather['feelsFahrenheit'];
+    const feelsTempContainer = document.getElementById('feels-temp');
+    const feelsTempHeader = feelsTempContainer.lastChild;
+    feelsTempHeader.textContent = `${displayFeelsTemp}\xB0`;
   };
 
   return { updateUI, toggleCelsius };
