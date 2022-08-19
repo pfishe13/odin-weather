@@ -96,7 +96,7 @@ const UI = (() => {
     const cloudsContainer = document.createElement('div');
     const cloudsHeader = document.createElement('h4');
     cloudsHeader.innerHTML = `<span class="material-symbols-outlined">
-    air
+    filter_drama
     </span>clouds`;
     const cloudsData = document.createElement('h4');
     cloudsData.textContent = `${clouds}%`;
