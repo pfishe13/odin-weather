@@ -3,7 +3,7 @@ import './styles.css';
 
 let defaultLocation = 'Miami';
 let storedLocation = localStorage.getItem('storedLocation');
-storedLocation = JSON.parse(storedLocation) || JSON.stringify(defaultLocation);
+storedLocation = JSON.parse(storedLocation) || defaultLocation;
 
 let darkMode = false;
 let storedDarkMode = localStorage.getItem('storedDarkMode');
@@ -16,7 +16,6 @@ if (storedDarkMode === true) {
 document.querySelector('form').addEventListener('submit', function (e) {
   e.preventDefault();
   const city = document.querySelector('input').value;
-  //   console.log(`City value is ${city}`);
   window.localStorage.setItem('storedLocation', JSON.stringify(city));
   getWeatherData(city);
 });
