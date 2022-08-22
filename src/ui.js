@@ -148,7 +148,23 @@ const UI = (() => {
     }, 3000);
   };
 
-  return { updateUI, toggleCelsius, showInvalidLocation };
+  const toggleDarkMode = () => {
+    const darkModeButton = document.getElementById('dark-mode-button');
+    const buttonIcon = darkModeButton.children[0];
+    buttonIcon.classList.add('materials-symbols-outlined');
+
+    document.querySelector('body').classList.toggle('dark');
+
+    if (document.querySelector('body').classList.contains('dark')) {
+      window.localStorage.setItem('storedDarkMode', JSON.stringify(true));
+      buttonIcon.textContent = 'light_mode';
+    } else {
+      window.localStorage.setItem('storedDarkMode', JSON.stringify(false));
+      buttonIcon.textContent = 'dark_mode';
+    }
+  };
+
+  return { updateUI, toggleCelsius, showInvalidLocation, toggleDarkMode };
 })();
 
 export default UI;

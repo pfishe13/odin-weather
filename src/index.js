@@ -2,13 +2,30 @@ import UI from './ui';
 import './styles.css';
 
 let defaultLocation = 'Miami';
+let storedLocation = localStorage.getItem('storedLocation');
+storedLocation = JSON.parse(storedLocation) || JSON.stringify(defaultLocation);
+
+let darkMode = false;
+let storedDarkMode = localStorage.getItem('storedDarkMode');
+storedDarkMode = JSON.parse(storedDarkMode) || JSON.stringify(darkMode);
+
+if (storedDarkMode === true) {
+  document.querySelector('body').classList.add('dark');
+}
 
 document.querySelector('form').addEventListener('submit', function (e) {
   e.preventDefault();
   const city = document.querySelector('input').value;
   //   console.log(`City value is ${city}`);
+  window.localStorage.setItem('storedLocation', JSON.stringify(city));
   getWeatherData(city);
 });
+
+document
+  .getElementById('dark-mode-button')
+  .addEventListener('click', function (e) {
+    UI.toggleDarkMode();
+  });
 
 async function getWeatherData(location) {
   const requestURL = `https://api.openweathermap.org/data/2.5/weather?q=${location}&APPID=e39170d30aebc36d04505fbbfd50451c
@@ -58,4 +75,4 @@ function toCels(kelv) {
   return Math.round(kelv - 273.15);
 }
 
-getWeatherData(defaultLocation);
+getWeatherData(storedLocation);
